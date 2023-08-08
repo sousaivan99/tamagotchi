@@ -99,7 +99,6 @@ const MenuBot = ({ setHappiness, setHunger, setSleep, sleep, coin, setCoin, trea
         <>
             <div className="action-cont">
                 {isFoodOpen && (
-
                     <div className="hidden-cont">
                         <div className="item">
                             <div className='item-info'>

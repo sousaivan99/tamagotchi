@@ -1,4 +1,4 @@
-'use client';
+'use client'
 import Menu from "@/component/menu";
 import MenuBot from "@component/menuBot";
 import { updateMood } from "@/component/utils";
@@ -6,45 +6,76 @@ import { updateMood } from "@/component/utils";
 import React, { useEffect, useState } from 'react';
 
 function Home() {
-  const [happiness, setHappiness] = useState(() => {
-    const savedHappiness = localStorage.getItem('happiness');
-    return Number(savedHappiness);
-  });
+  const [happiness, setHappiness] = useState(100);
+  const [hunger, setHunger] = useState(100);
+  const [sleep, setSleep] = useState(100);
+  const [coin, setCoin] = useState(10);
+  const [treat, setTreat] = useState(5);
+  const [NTreat, setNTreat] = useState(2);
+  const [BTreat, setBTreat] = useState(1);
+  const [isComplete, setIsComplete] = useState(false);
 
-  const [hunger, setHunger] = useState(() => {
-    let savedHunger = localStorage.getItem('hunger');
-    if (savedHunger <= 0) {
-      return 0;
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      console.log('inside');
+      const savedHappiness = localStorage.getItem('happiness');
+      if (savedHappiness !== null) {
+        setHappiness(Number(savedHappiness));
+      }
+
+      const savedHunger = localStorage.getItem('hunger');
+      if (savedHunger !== null) {
+        setHunger(Number(savedHunger));
+      }
+
+      const savedSleep = localStorage.getItem('sleep');
+      if (savedSleep !== null) {
+        setSleep(Number(savedSleep));
+      }
+
+      const savedCoin = localStorage.getItem('coin');
+      if (savedCoin !== null) {
+        setCoin(Number(savedCoin));
+      }
+
+      const savedTreat = localStorage.getItem('Treat');
+      if (savedTreat !== null) {
+        setTreat(Number(savedTreat));
+      }
+
+      const savedNTreat = localStorage.getItem('NTreat');
+      if (savedNTreat !== null) {
+        setNTreat(Number(savedNTreat));
+      }
+
+      const savedBTreat = localStorage.getItem('BTreat');
+      if (savedBTreat !== null) {
+        setBTreat(Number(savedBTreat));
+      }
+      setIsComplete(true);
     }
-    return Number(savedHunger);
-  });
+  }, []);
 
-  const [sleep, setSleep] = useState(() => {
-    const savedSleep = localStorage.getItem('sleep');
-    return Number(savedSleep);
-  });
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      if (!isComplete) {
+        return
+      } else {
+        console.log('happiness: ' + happiness);
+        localStorage.setItem('happiness', happiness);
+        localStorage.setItem('hunger', hunger);
+        localStorage.setItem('sleep', sleep);
+        console.log(coin);
+        localStorage.setItem('coin', coin);
+        localStorage.setItem('Treat', treat);
+        localStorage.setItem('NTreat', NTreat);
+        localStorage.setItem('BTreat', BTreat);
+      }
+    }
+  }, [happiness, hunger, sleep, coin, treat, NTreat, BTreat, isComplete]);
 
   const [avg, setAvg] = useState(100);
   const [mood, setMood] = useState('happy');
-  const [coin, setCoin] = useState(() => {
-    const savedCoin = localStorage.getItem('coin');
-    return Number(savedCoin);
-  });
-
-  const [treat, setTreat] = useState(() => {
-    const savedTreat = localStorage.getItem('Treat');
-    return Number(savedTreat);
-  });
-
-  const [NTreat, setNTreat] = useState(() => {
-    const savedNTreat = localStorage.getItem('NTreat');
-    return Number(savedNTreat);
-  });
-
-  const [BTreat, setBTreat] = useState(() => {
-    const savedBTreat = localStorage.getItem('BTreat');
-    return Number(savedBTreat);
-  });
 
   // Start or stop timer based on avg
   useEffect(() => {
@@ -100,7 +131,7 @@ function Home() {
     return () => {
       clearInterval(interval);
     };
-  }, [happiness]);
+  }, [happiness, avg]);
 
   useEffect(() => {
     localStorage.setItem('hunger', hunger.toString());
@@ -187,7 +218,6 @@ function Home() {
     // console.log('sleep: ' + sleep);
     // console.log('avg: ' + avg);
   }, [avg, sleep, hunger, happiness]);
-
   return (
     <>
       <div className="wrapper">
