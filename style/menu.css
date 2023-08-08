@@ -1,0 +1,116 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: fit-content;
+  padding: 1em;
+}
+.status {
+  padding: 1em;
+  display: flex;
+  gap: 2em;
+  border-radius: 6px;
+  width: 100%;
+  justify-content: space-around;
+}
+.status-item {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 1em;
+  width: 100%;
+  font-weight: 500;
+  text-align: center;
+  font-size: 18px;
+  color: var(--fff);
+}
+.progress-bar {
+  width: 100%;
+  height: 10px;
+  background-color: var(--green-dark);
+  border-radius: 5px;
+  overflow: hidden;
+}
+.progress {
+  height: 100%;
+  background-color: var(--green);
+  border-radius: 5px;
+  transition: width 0.3s ease-in-out;
+}
+.coin {
+  color: var(--fff);
+}
+.hidden-cont {
+  position: absolute;
+  width: 90%;
+  transform: translateY(-120px);
+  background-color: rgba(35, 35, 35, 0.158);
+  backdrop-filter: blur(10px);
+  padding: 0.5em;
+  display: flex;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 0.5em;
+  z-index: 1;
+  border-radius: 6px;
+}
+.item {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5em;
+  position: relative;
+}
+.item span {
+  color: var(--fff);
+  font-weight: 500;
+  text-align: center;
+}
+.item-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.item button {
+  border: 0;
+  border-radius: 6px;
+  padding: 0.5em;
+  background-color: #fefefe;
+  color: #333;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+.item button:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.action-cont {
+  position: relative;
+  width: 100%;
+  height: 120px;
+  padding: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: var(--footer);
+}
+.action-items {
+  font-size: 18px;
+  font-weight: 700;
+  text-transform: uppercase;
+  background-color: var(--fff);
+  padding: 6px;
+  border-radius: 6px;
+  transition: 0.2s ease;
+}
+.action-items:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
