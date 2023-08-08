@@ -62,14 +62,14 @@ const MenuBot = ({ setHappiness, setHunger, setSleep, sleep, coin, setCoin, trea
 
     const handleItem = (size, type) => {
         if (size === 'l') {
-            if (type === 'hunger') {
+            if (type === 'hunger' && BTreat >= 1) {
                 // Add 50 to the current hunger value
                 setHunger((prevHunger) => Math.min(100, prevHunger + 50));
                 setHappiness((prevHappiness) => Math.min(100, prevHappiness + 50));
                 setBTreat((prevBTreat) => Math.min(100, prevBTreat - 1));
             }
         } else if (size === 'm') {
-            if (type === 'hunger') {
+            if (type === 'hunger' && NTreat >= 1) {
                 // Add 50 to the current hunger value
                 setHunger((prevHunger) => Math.min(100, prevHunger + 35));
                 setHappiness((prevHappiness) => Math.min(100, prevHappiness + 35));
@@ -88,10 +88,13 @@ const MenuBot = ({ setHappiness, setHunger, setSleep, sleep, coin, setCoin, trea
             }
         } else {
             if (type === 'hunger') {
-                // Add 50 to the current hunger value
-                setHunger((prevHunger) => Math.min(100, prevHunger + 20));
-                setHappiness((prevHappiness) => Math.min(100, prevHappiness + 20));
-                setTreat((prevTreat) => Math.min(100, prevTreat - 1));
+                if (treat >= 1) {
+                    // Add 50 to the current hunger value
+                    setHunger((prevHunger) => Math.min(100, prevHunger + 20));
+                    setHappiness((prevHappiness) => Math.min(100, prevHappiness + 20));
+                    setTreat((prevTreat) => Math.min(100, prevTreat - 1));
+
+                }
             }
         }
     };
